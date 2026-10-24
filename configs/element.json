@@ -1,0 +1,38 @@
+{
+  "seed": 20261012,
+  "seeds": [
+    20261012,
+    20261013,
+    20261014
+  ],
+  "learning_rates": [
+    0.001,
+    0.003,
+    0.01
+  ],
+  "epochs": 20,
+  "batch_size": 128,
+  "weight_decay": 0.0001,
+  "gradient_clip": 1.0,
+  "feature_subsets": {
+    "core2": [
+      0,
+      11
+    ]
+  },
+  "coefficient_grid": [
+    0.0,
+    0.5,
+    1.0,
+    2.0,
+    4.0
+  ],
+  "inputs": {
+    "evidence": "datasets/element/evidence_v1/train",
+    "features": "datasets/element/features",
+    "predictions": "outputs/element-reference"
+  },
+  "inference": {
+    "head": "outputs/checkpoints/element/main/head.pt"
+  }
+}

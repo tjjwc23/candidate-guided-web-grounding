@@ -1,0 +1,17 @@
+# Reference environment; install a torch build suitable for your platform first.
+torch==2.10.0
+torchvision==0.25.0
+transformers==5.17.0
+accelerate==1.15.0
+datasets==4.7.0
+huggingface_hub==1.31.0
+tokenizers==0.23.2
+safetensors==0.8.0
+sentencepiece==0.2.2
+numpy==2.2.6
+pyarrow==23.0.1
+lxml==4.9.3
+tqdm==4.67.3
+peft==0.20.0
+pillow==12.1.1
+protobuf==7.36.1

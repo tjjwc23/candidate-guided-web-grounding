@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "updated": "2026-10-24",
+  "recipe": {
+    "name": "candidate-guided-cross-window-element-grounding",
+    "candidate_budget": 50,
+    "window_candidate_budget": 20,
+    "history_steps": 4,
+    "feature_count": 18
+  },
+  "frozen_weights": {
+    "grounding_c50_adapter": {
+      "path": "outputs/mainline/grounding/adapter/adapter_model.safetensors",
+      "sha256": "286a116de51ed8e32329e3ac3b20f88d7694b1a8f513984be587e102c297b6dc",
+      "bytes": 37508632,
+      "checkpoint_dir": "outputs/mainline/grounding"
+    },
+    "deberta_proposals": {
+      "path": "resources/models/deberta-v3-base/pytorch_model.bin",
+      "checkpoint_dir": "resources/models/deberta-v3-base",
+      "sha256": "9ef5937eba69fe92c4563e60affe9645fd90526fb0eedbec537ead495a3c6291",
+      "bytes": 737762873
+    },
+    "element_head": {
+      "path": "outputs/checkpoints/element/main/head.pt",
+      "checkpoint_dir": "outputs/checkpoints/element/main",
+      "sha256": "3a847d0359ea88af95846df7377616a0a9fc46316d17ee8265da1dd620ac0573"
+    }
+  },
+  "frozen_inputs": {
+    "anchored_rows": {
+      "test_task": "outputs/mainline/inputs/test_task/geometry/rows.json",
+      "test_website": "outputs/mainline/inputs/test_website/geometry/rows.json",
+      "test_domain": "outputs/mainline/inputs/test_domain/geometry/rows.json"
+    },
+    "grounding_baseline": {
+      "test_task": "outputs/mainline/inputs/test_task/geometry/baseline.json",
+      "test_website": "outputs/mainline/inputs/test_website/geometry/baseline.json",
+      "test_domain": "outputs/mainline/inputs/test_domain/geometry/baseline.json"
+    },
+    "grounding_page_index": {
+      "test_task": "outputs/mainline/inputs/test_task/geometry/page_index.jsonl",
+      "test_website": "outputs/mainline/inputs/test_website/geometry/page_index.jsonl",
+      "test_domain": "outputs/mainline/inputs/test_domain/geometry/page_index.jsonl"
+    },
+    "grounding_points": {
+      "test_task": "outputs/mainline/inputs/test_task/points",
+      "test_website": "outputs/mainline/inputs/test_website/points",
+      "test_domain": "outputs/mainline/inputs/test_domain/points"
+    },
+    "grounding_semantics": {
+      "test_task": "datasets/element/evidence_v1/test_task/semantics",
+      "test_website": "datasets/element/evidence_v1/test_website/semantics",
+      "test_domain": "datasets/element/evidence_v1/test_domain/semantics"
+    },
+    "public_proposals": {
+      "test_task": "outputs/mainline/inputs/test_task/proposals.json",
+      "test_website": "outputs/mainline/inputs/test_website/proposals.json",
+      "test_domain": "outputs/mainline/inputs/test_domain/proposals.json"
+    }
+  },
+  "frozen_predictions": {
+    "test_task": {
+      "path": "outputs/element-reference/main-test_task.json"
+    },
+    "test_website": {
+      "path": "outputs/element-reference/main-test_website.json"
+    },
+    "test_domain": {
+      "path": "outputs/element-reference/main-test_domain.json"
+    }
+  },
+  "reported": {
+    "test_task": {
+      "element_accuracy": 63.52920232531376
+    },
+    "test_website": {
+      "element_accuracy": 55.94937126989763
+    },
+    "test_domain": {
+      "element_accuracy": 52.84317597397982
+    }
+  },
+  "splits": {
+    "test_task": {
+      "steps": 1339,
+      "tasks": 177
+    },
+    "test_website": {
+      "steps": 1019,
+      "tasks": 142
+    },
+    "test_domain": {
+      "steps": 4060,
+      "tasks": 694
+    }
+  },
+  "input_sha256": {
+    "anchored_rows/test_task": "1aa9d9956f4c12839278237874b506043880e8611b1204cb3bc559317f37b777",
+    "anchored_rows/test_website": "379b87ff3acb1a6d6ddf2bebd6f589b218f3b90685f49a9d1e5d9ee6c7555009",
+    "anchored_rows/test_domain": "7487f01b97d90071113c10abeda92a46084714fcbe0b6fa3e54bdb84f5579422",
+    "grounding_baseline/test_task": "2f8688f5d992063715bee766592af959c07edcafa67a870e9fa6e6e5e07b3d50",
+    "grounding_baseline/test_website": "79fd69eeef625ddc79c94dec0e6f196d0a2f9ce9fae6109191f2e3fd9438ddec",
+    "grounding_baseline/test_domain": "70e6d6ee809dd14a601403dc7645f807a4a5665e738d4e0fcc39c9ba646e7242",
+    "grounding_page_index/test_task": "46b0def91e46ffa4e3c5178d33803dce986182fd79ceb8400d425f311735e198",
+    "grounding_page_index/test_website": "aaefb1c249b12602b523fda614641a6fd9576408c2aa9c2cc6039b2e6bceceda",
+    "grounding_page_index/test_domain": "8e3eb033e09de4bfc67abe96ce30d12ac01503c2312d8132c1eed757892d1c9e",
+    "grounding_points/test_task": "3e5fe063c779fc1175b48efafc99b37939f94b9771cdca38a9a09f412a9ce71e",
+    "grounding_points/test_website": "706af59ee6c70f09a045595a1bfff0f993a6a52108fe8e9b01c31c8690a87fe1",
+    "grounding_points/test_domain": "7874a133a0e5d956a37a3fa7082b9c8d2172d8aa97f8801d13c337826ce1f8fb",
+    "grounding_semantics/test_task": "a95250d3132180c0ee869e98d98e0cf27f83849f4bf3f568e02841ea8e2462d2",
+    "grounding_semantics/test_website": "8307aa0dd6930cec8621a8b3a855d1aee4408be8f9a0aa79e06df912251e6edf",
+    "grounding_semantics/test_domain": "6b6bbe13242bc86fe125455621e4110f4a4e464ab6c9b0e7c9b9bc586fa09746",
+    "public_proposals/test_task": "83aa9d8c60ffbb9b87e2fa111b1f89dab38b9eb188fc2d5874682fc97a1569c8",
+    "public_proposals/test_website": "5f6c0ee611987148a1ae52dd159c64827ed433e1bc8da79fa511e3ffe5d492c1",
+    "public_proposals/test_domain": "5b31acfde204f2450a7edc0cc99164d4bb1e0c498db6c9db4b9fc084e6462508",
+    "predictions/test_task": "fa84d94401d5bc1b669108214fe42a846ba61ca1500ddb54e0274f36a0d87c06",
+    "predictions/test_website": "ea3ad7b84b245e0fde0c09e7e11feae378d71f264d982976410013288a3e19b4",
+    "predictions/test_domain": "feae7abd82ae8b2ea8e0441295642deedfa268c9c5cd96329cc545d158e26c6a"
+  }
+}
