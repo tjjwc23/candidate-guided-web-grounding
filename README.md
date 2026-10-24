@@ -92,7 +92,7 @@ bash scripts/run.sh experiment element-features --output outputs/features
 bash scripts/run.sh experiment element-mechanisms --output outputs/mechanisms
 bash scripts/run.sh experiment element-functional --output outputs/functional
 
-PYTHONPATH=src python papers/cached_revision_controls.py \
+PYTHONPATH=src python experiments/cached_revision_controls.py \
   --functional-results outputs/functional --output outputs/first-window
 
 bash scripts/run.sh verify element-functional --output outputs/functional
@@ -105,13 +105,11 @@ The release covers scoring-head training, coordinate inference, element aggregat
 ## Coverage and latency
 
 ```bash
-PYTHONPATH=src python papers/submission_coverage.py --output outputs/coverage
-PYTHONPATH=src python papers/submission_latency.py --output outputs/latency
+PYTHONPATH=src python experiments/submission_coverage.py --output outputs/coverage
+PYTHONPATH=src python experiments/submission_latency.py --output outputs/latency
 ```
 
 Coverage compares candidate-guided, endpoint-spaced, and segment-centered windows at matched budgets. Latency measures coordinate generation and element scoring given cached candidates, semantic scores, and crops; it excludes retrieval and initial page preparation.
-
-The `verify_submission_*` scripts check the original saved measurement records. Their source archive is retained to verify the recorded implementation hashes; see the reproduction guide for the required layout.
 
 ## Repository layout
 
@@ -122,7 +120,7 @@ src/retrieval/    Candidate ranking
 src/grounding/    Coordinate inference, feature aggregation, and scoring heads
 src/experiments/  Head fitting and control experiments
 src/evaluation/   Metrics, paired statistics, and independent checks
-papers/           First-window, coverage, and latency experiments
+experiments/      First-window, coverage, and latency experiments
 scripts/run.sh    Command-line entry point
 tests/           Unit and artifact-dependent tests
 ```

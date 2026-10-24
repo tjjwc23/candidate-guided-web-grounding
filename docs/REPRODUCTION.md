@@ -25,6 +25,7 @@ outputs/
     element/main/model.json
     element/main/head.pt
   element-reference/main-<split>.json
+  ch04_element18_20261021/main/head.pt  # original head used by the latency benchmark
   mainline/
     grounding/adapter/adapter_model.safetensors
     inputs/<test split>/
@@ -90,27 +91,8 @@ The main evaluation uses all test actions and task-macro EA. Paired intervals us
 | Two-feature versus 18-feature fits | `experiment element-features` |
 | Window coverage groups and feature interventions | `experiment element-mechanisms` |
 | Validation-tuned fixed scores; all-hit versus minimum-box fitting | `experiment element-functional` |
-| Separately fitted first-window heads; complete C50 semantics | `papers/cached_revision_controls.py --functional-results <functional output>` |
-| Matched-budget geometric coverage | `papers/submission_coverage.py --output <new directory>` |
-| Paired cached-input latency | `papers/submission_latency.py --output <new directory>` |
+| Separately fitted first-window heads; complete C50 semantics | `experiments/cached_revision_controls.py --functional-results <functional output>` |
+| Matched-budget geometric coverage | `experiments/submission_coverage.py --output <new directory>` |
+| Paired cached-input latency | `experiments/submission_latency.py --output <new directory>` |
 
 The first-window script uses the heads and summaries produced by the functional experiment. Complete C50 semantics may read the pinned raw dataset to recover retrieval-only actions that lack usable screenshot geometry.
-
-## Original measurement verification
-
-The measurement verifiers expect the original records in:
-
-```text
-outputs/ch04_submission_controls_20261022/coverage/
-outputs/ch04_submission_controls_20261022/latency_v2/
-outputs/ch04_element18_20261021/main/head.pt
-```
-
-They also read the geometry, semantic evidence, screenshots, and adapter files named in the saved protocols. Run:
-
-```bash
-PYTHONPATH=src python papers/verify_submission_coverage.py
-PYTHONPATH=src python papers/verify_submission_latency.py --report outputs/latency-check.json
-```
-
-These scripts check the paper's specific measurement protocol and original records. They are separate from running new coverage or latency experiments. The source files in `papers/measurement-sources-20261022.zip` are used for hash comparison, not imported or executed. The recorded original source paths remain unchanged inside that archive.

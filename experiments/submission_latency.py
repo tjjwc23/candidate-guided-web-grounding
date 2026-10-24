@@ -90,7 +90,7 @@ def run(output, samples, protocol):
         result = dict(status='blocked', reason='CUDA unavailable' if not env['cuda_available'] else 'Missing inputs',
                       environment=env, missing_files=missing, sampled_actions=len(samples),
                       completed_measurements=0, timings=None,
-                      resume_command='PYTHONPATH=src python papers/submission_latency.py')
+                      resume_command='PYTHONPATH=src python experiments/submission_latency.py')
         write(output / 'status.json', result)
         print(json.dumps(result, ensure_ascii=False), flush=True)
         return 2
